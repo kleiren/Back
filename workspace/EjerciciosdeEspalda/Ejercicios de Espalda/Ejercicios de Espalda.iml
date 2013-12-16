@@ -87,6 +87,7 @@
     <orderEntry type="library" exported="" name="support-v4-19.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v13-19.0.0" level="project" />
     <orderEntry type="library" exported="" name="ComAndroidSupportAppcompatV71800.aar" level="project" />
+    <orderEntry type="library" exported="" name="GraphView-3.0" level="project" />
   </component>
 </module>
 
