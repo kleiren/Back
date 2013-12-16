@@ -11,11 +11,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +42,8 @@ public class MainActivity extends Activity
     private CharSequence mTitle;
 
     private Button boton, botonstart;
+
+    private int tiempomin, tiempomilis;
 
     final static private long ONE_SECOND = 1000;
     final static private long TWENTY_SECONDS = ONE_SECOND * 20;
@@ -69,18 +74,32 @@ public class MainActivity extends Activity
 
 
 
-
+        obtenerPreferencias();
         setup();
         boton = (Button) findViewById(R.id.botontiempo);
         botonstart = (Button) findViewById(R.id.botonstart);
+
+        boton.setText(((tiempomin/60)*1000)+"min");
 
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //setea el tiempo a x segundos
+                SharedPreferences pref =
+                        PreferenceManager.getDefaultSharedPreferences(
+                                MainActivity.this);
+                tiempomin =Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
+                tiempomilis = (tiempomin * 1000) * 60;
+
+
                 am.set( AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +
-                        5000, pi );
+                        tiempomilis   , pi );
+
+
+
+
+
 
 
             }
@@ -103,8 +122,16 @@ public class MainActivity extends Activity
 
     }
 
+    private void obtenerPreferencias (){
 
+        SharedPreferences pref =
+                PreferenceManager.getDefaultSharedPreferences(
+                        MainActivity.this);
 
+        Log.i("", "Opción 1: " + pref.getBoolean("opcion1", false));
+        Log.i("", "Opción 2: " + pref.getString("opcion2", ""));
+        Log.i("", "Opción 3: " + pref.getString("opcion3", ""));
+    }
 
 
 
@@ -169,7 +196,24 @@ public class MainActivity extends Activity
 
 
 
+    protected void onResume (){
+        super.onResume();
 
+
+
+
+
+                //setea el tiempo a x segundos
+                SharedPreferences pref =
+                        PreferenceManager.getDefaultSharedPreferences(
+                                MainActivity.this);
+                tiempomin =Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
+
+
+        boton.setText(tiempomin+"min");
+
+
+            }
 
 
 
@@ -231,6 +275,8 @@ public class MainActivity extends Activity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this,
+                    OpcionesActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

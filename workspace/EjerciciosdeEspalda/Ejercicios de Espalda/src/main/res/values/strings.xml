@@ -27,6 +27,8 @@
     <string name="title_activity_resultados">Resultados</string>
     <string name="title_activity_tiempos">Tiempos</string>
     <string name="title_activity_main_activity2">MainActivity</string>
-    <string name="title_activity_tiempo">Tiempo</string><string name="tiempos"/>
+    <string name="title_activity_tiempo">Tiempo</string>
+    <string name="tiempos"></string>
+    <string name="title_activity_opciones_actvivity">OpcionesActvivity</string>
 
 </resources>

@@ -30,6 +30,12 @@
             android:name="com.ejerciciosdeespalda.Tiempo"
             android:label="@string/title_activity_tiempo" >
         </activity>
+        <activity
+            android:name="com.ejerciciosdeespalda.OpcionesActivity"
+            android:label="@string/title_activity_tiempo" >
+        </activity>
+
+
     </application>
 
 </manifest>
