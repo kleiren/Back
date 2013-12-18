@@ -3,13 +3,17 @@ package com.ejerciciosdeespalda;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.Toast;
 
 /*import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
@@ -19,7 +23,10 @@ public class Tiempo extends Activity {
 
 
 
-    private TextView time1, time2, time3, time4;
+    private Button back ;
+
+    float[] times=new float [15];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +51,38 @@ public class Tiempo extends Activity {
 
         ActionBar.Tab tab2 =
                 abar.newTab().setText("Tiempos extremidades superiores");
+        ActionBar.Tab tab3 =
+                abar.newTab().setText("Tiempos espalda");
+        ActionBar.Tab tab4 =
+                abar.newTab().setText("Tiempos extremidades inferiores");
+        ActionBar.Tab tab5 =
+                abar.newTab().setText("Tiempos oculares");
+
+
+        Bundle extras = getIntent().getExtras();
+        float [] tiempos= extras.getFloatArray("tiempos");
 
         //Creamos los fragments de cada pestaña
-        Fragment tab1frag = new Tab1();
-        Fragment tab2frag = new Tab2();
+        Fragment tab1frag = new Tab1(tiempos);
+        Fragment tab2frag = new Tab2(tiempos);
+        Fragment tab3frag = new Tab3(tiempos);
+        Fragment tab4frag = new Tab4(tiempos);
+        Fragment tab5frag = new Tab5(tiempos);
+
 
         //Asociamos los listener a las pestañas
         tab1.setTabListener(new MiTabListener(tab1frag));
         tab2.setTabListener(new MiTabListener(tab2frag));
+        tab3.setTabListener(new MiTabListener(tab3frag));
+        tab4.setTabListener(new MiTabListener(tab4frag));
+        tab5.setTabListener(new MiTabListener(tab5frag));
 
         //Añadimos las pestañas a la action bar
         abar.addTab(tab1);
         abar.addTab(tab2);
-
+        abar.addTab(tab3);
+        abar.addTab(tab4);
+        abar.addTab(tab5);
 
 
 
@@ -74,18 +100,43 @@ public class Tiempo extends Activity {
                     .commit();
         }
 
-        time1=(TextView) findViewById(R.id.tiempo1);
-        time2=(TextView) findViewById(R.id.tiempo2);
-        time3=(TextView) findViewById(R.id.tiempo3);
-        time4=(TextView) findViewById(R.id.tiempo4);
+      back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        Bundle extras = getIntent().getExtras();
-        float[] tiempos= extras.getFloatArray("tiempos");
+                Intent activity1 = new Intent(Tiempo.this, MainActivity.class);
+                startActivityForResult(activity1, 0);
+                finish();
 
-        time1.setText("Ejercicio 1: "+(int) tiempos[0]+" sec");
-        time2.setText("Ejercicio 2: "+(int) tiempos[1]+" sec");
-        time3.setText("Ejercicio 3: "+(int) tiempos[2]+" sec");
-        time4.setText("Ejercicio 4: "+(int) tiempos[3]+" sec");
+                BroadcastReceiver br = new BroadcastReceiver() {
+                    //define que hacer al pasar el tiempo
+                    @Override
+                    public void onReceive(Context c, Intent i) {
+                        Toast.makeText(c, "Te avisaremos en 1 hora", Toast.LENGTH_LONG).show();
+
+
+
+                    }
+                };
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
 
 //grafico();
 

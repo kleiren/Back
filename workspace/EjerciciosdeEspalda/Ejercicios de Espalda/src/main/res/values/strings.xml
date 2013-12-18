@@ -22,6 +22,10 @@
     <string name="esEx3">Entrelazar los dedos y girar las palmas por encima de la cabeza a la vez que se estiran los brazos hacia arriba.</string>
     <string name="esEx4">Poner los brazod en posición de cruz, palmas hacia abajo, mover las manos arriba/abajo. Los brazos en la misma posición, girar las palmas hacia arriba/abajo.</string>
     <string name="esEx5">Partiendo de la misma posición subir y bajar los brazos.</string>
+    <string name="bEx1">Sentado con la columna vertebral recta, contraer los abdominales empujando la zona lumbar hacia el respaldo.</string>
+    <string name="bEx2">Con los dedos entrelazados detrás de la cabeza llevar los codos hacia atrás y aproximar los omóplatos.</string>
+    <string name="eiEx1">En posición sentado, estirar las piernas y hacer movimientos con los tobillos.</string>
+    <string name="oEx1">Alzar las cejas y abrir bien los ojos mirando a un punto lejano. Mover los ojos en todas direcciones.</string>
     <string name="tituloinicio">Titulo Guay</string>
     <string name="botonstart">Comenzar ya</string>
     <string name="title_activity_resultados">Resultados</string>
@@ -30,5 +34,7 @@
     <string name="title_activity_tiempo">Tiempo</string>
     <string name="tiempos">1:00</string>
     <string name="title_activity_opciones_actvivity">OpcionesActvivity</string>
+    <string name="tiemposcabeza">Tiempos Cabeza</string>
+    <string name="tiemposes">Tiempos Extremidades Superiores</string><string name="back">Volver</string>
 
 </resources>

@@ -98,10 +98,6 @@ public class MainActivity extends Activity
 
 
 
-
-
-
-
             }
         });
         botonstart.setOnClickListener(new View.OnClickListener() {

@@ -1,0 +1,30 @@
+package com.ejerciciosdeespalda;
+
+
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class Tab5 extends Fragment {
+
+    private TextView timees1,timees2, timees3, timees4, timees5;
+    private float[] tiempos;
+    public Tab5(float[] tiempos){
+        this.tiempos=tiempos;
+
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+
+        View view = inflater.inflate(R.layout.fragment_time5, container, false);
+
+
+
+        return view;
+    }
+}

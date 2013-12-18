@@ -25,7 +25,7 @@ public class Ejercicios extends Activity {
     private ImageView imagenppal;
     private int estado=0;
     private Chronometer cronometro;
-    public float[] tiempo=new float[10];
+    public float[] tiempo=new float[15];
 
 
     @Override
@@ -165,6 +165,54 @@ public class Ejercicios extends Activity {
             }
             case 9:{
                 tiempo [estado-2] =(SystemClock.elapsedRealtime() - cronometro.getBase())/1000;
+                cronometro.setBase(SystemClock.elapsedRealtime());
+                cronometro.stop();
+                cronometro.start();
+                titulo.setText("Ejercicios de Espalda");
+                subtitulo.setText("Ejercicio1");
+                descripcion.setText (R.string.bEx1);
+                imagenppal.setImageResource(R.drawable.ejercicio1b);
+                break;
+
+            }
+            case 10:{
+                tiempo [estado-2] =(SystemClock.elapsedRealtime() - cronometro.getBase())/1000;
+                cronometro.setBase(SystemClock.elapsedRealtime());
+                cronometro.stop();
+                cronometro.start();
+                titulo.setText("Ejercicios de Espalda");
+                subtitulo.setText("Ejercicio2");
+                descripcion.setText (R.string.bEx2);
+                imagenppal.setImageResource(R.drawable.ejercicio2b);
+                break;
+
+            }
+            case 11:{
+                tiempo [estado-2] =(SystemClock.elapsedRealtime() - cronometro.getBase())/1000;
+                cronometro.setBase(SystemClock.elapsedRealtime());
+                cronometro.stop();
+                cronometro.start();
+                titulo.setText("Ejercicios de Extremidades Inferiores");
+                subtitulo.setText("Ejercicio1");
+                descripcion.setText (R.string.eiEx1);
+                imagenppal.setImageResource(R.drawable.ejercicio3b);
+                break;
+
+            }
+            case 12:{
+                tiempo [estado-2] =(SystemClock.elapsedRealtime() - cronometro.getBase())/1000;
+                cronometro.setBase(SystemClock.elapsedRealtime());
+                cronometro.stop();
+                cronometro.start();
+                titulo.setText("Ejercicios Oculares");
+                subtitulo.setText("Ejercicio1");
+                descripcion.setText (R.string.oEx1);
+                imagenppal.setImageResource(R.drawable.ejercicio1o);
+                break;
+
+            }
+            case 13:{
+                tiempo [estado-2] =(SystemClock.elapsedRealtime() - cronometro.getBase())/1000;
 
                 cronometro.setBase(SystemClock.elapsedRealtime());
                 cronometro.stop();
@@ -175,7 +223,7 @@ public class Ejercicios extends Activity {
                 imagenppal.setImageDrawable(null);
                 break;
             }
-            case 10:{
+            case 14:{
                 //cambia de a la actividad ejercicios
                 Intent activity2 = new Intent(Ejercicios.this,Tiempo.class);
 

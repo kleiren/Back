@@ -7,16 +7,19 @@ android:layout_height="match_parent"
 tools:context=".Tiempo"
 tools:ignore="MergeRootFrame" >
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/tiempos"
-    android:id="@+id/tiempo1"
-    android:layout_gravity="center"
-    android:layout_marginTop="138dp"
-    android:textSize="25sp"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true" />
+
+
+<!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tiempos"
+        android:id="@+id/tiempo1"
+        android:layout_gravity="center"
+        android:layout_marginTop="138dp"
+        android:textSize="25sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 <TextView
     android:layout_width="wrap_content"
@@ -66,4 +69,12 @@ tools:ignore="MergeRootFrame" >
     android:id="@+id/graph"
     android:layout_alignParentBottom="true"
     android:layout_alignParentLeft="true" />
+    -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:id="@+id/back"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
