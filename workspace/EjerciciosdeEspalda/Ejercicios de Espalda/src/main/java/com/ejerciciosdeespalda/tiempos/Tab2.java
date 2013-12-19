@@ -1,4 +1,4 @@
-package com.ejerciciosdeespalda;
+package com.ejerciciosdeespalda.tiempos;
 
 
 import android.app.Fragment;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.ejerciciosdeespalda.R;
 
 public class Tab2 extends Fragment {
 
@@ -30,11 +32,11 @@ public class Tab2 extends Fragment {
         timees5=(TextView) view.findViewById(R.id.timees5);
 
 
-        timees1.setText("Ejercicio 3: "+(int) tiempos[3]+" sec");
-        timees2.setText("Ejercicio 3: "+(int) tiempos[4]+" sec");
+        timees1.setText("Ejercicio 1: "+(int) tiempos[3]+" sec");
+        timees2.setText("Ejercicio 2: "+(int) tiempos[4]+" sec");
         timees3.setText("Ejercicio 3: "+(int) tiempos[5]+" sec");
-        timees4.setText("Ejercicio 3: "+(int) tiempos[6]+" sec");
-        timees5.setText("Ejercicio 3: "+(int) tiempos[7]+" sec");
+        timees4.setText("Ejercicio 4: "+(int) tiempos[6]+" sec");
+        timees5.setText("Ejercicio 5: "+(int) tiempos[7]+" sec");
 
         return view;
     }

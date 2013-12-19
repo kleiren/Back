@@ -1,13 +1,14 @@
-package com.ejerciciosdeespalda;
+package com.ejerciciosdeespalda.tiempos;
 
 
-
-        import android.app.Fragment;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.ejerciciosdeespalda.R;
 
 public class Tab1 extends Fragment {
     private TextView timec1, timec2, timec3;

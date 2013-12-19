@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -52,11 +53,8 @@ public class MainActivity extends Activity
     AlarmManager am;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
 
         super.onCreate(savedInstanceState);
@@ -72,14 +70,12 @@ public class MainActivity extends Activity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
 
-
-
         obtenerPreferencias();
         setup();
         boton = (Button) findViewById(R.id.botontiempo);
         botonstart = (Button) findViewById(R.id.botonstart);
 
-        boton.setText(((tiempomin/60)*1000)+"min");
+        boton.setText(((tiempomin / 60) * 1000) + "min");
 
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -89,12 +85,13 @@ public class MainActivity extends Activity
                 SharedPreferences pref =
                         PreferenceManager.getDefaultSharedPreferences(
                                 MainActivity.this);
-                tiempomin =Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
+                tiempomin = Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
                 tiempomilis = (tiempomin * 1000) * 60;
 
 
-                am.set( AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +
-                        tiempomilis   , pi );
+                am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +
+                        tiempomilis, pi);
+                Toast.makeText(getApplicationContext(), "Te avisaremos en " + tiempomin + " minutos", Toast.LENGTH_LONG).show();
 
 
 
@@ -103,22 +100,18 @@ public class MainActivity extends Activity
         botonstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //cambia de a la actividad ejercicios
-                Intent activity1 = new Intent(MainActivity.this,Ejercicios.class);
-                startActivityForResult(activity1,0);
+                //cambia de a la actividad ejercicios
+                Intent activity1 = new Intent(MainActivity.this, Ejercicios.class);
+                startActivityForResult(activity1, 0);
             }
         });
 
 
-
-
-
-
-
-
     }
 
-    private void obtenerPreferencias (){
+
+
+    private void obtenerPreferencias() {
 
         SharedPreferences pref =
                 PreferenceManager.getDefaultSharedPreferences(
@@ -130,7 +123,6 @@ public class MainActivity extends Activity
     }
 
 
-
     //inicializa el alarm manager
     private void setup() {
 
@@ -140,18 +132,13 @@ public class MainActivity extends Activity
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_drawer)
                         .setContentTitle("Ejercicios de Espalda")
-                        .setContentText("Han pasado 5 segundos");
-// Creates an explicit intent for an Activity in your app
+                        .setContentText("Han pasado " + tiempomin + " minutos");
+
         Intent resultIntent = new Intent(this, Ejercicios.class);
 
-// The stack builder object will contain an artificial back stack for the
-// started Activity.
-// This ensures that navigating backward from the Activity leads out of
-// your application to the Home screen.
+
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-// Adds the back stack for the Intent (but not the Intent itself)
         stackBuilder.addParentStack(Ejercicios.class);
-// Adds the Intent that starts the Activity to the top of the stack
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(
@@ -161,8 +148,7 @@ public class MainActivity extends Activity
         mBuilder.setContentIntent(resultPendingIntent);
         final NotificationManager mNotificationManager =  //cambiado a final
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-// mId allows you to update the notification later on.
-   //     mNotificationManager.notify(1, mBuilder.build());
+
 
 //----------------------------------------------------------
 
@@ -175,49 +161,34 @@ public class MainActivity extends Activity
                 mNotificationManager.notify(1, mBuilder.build());  //incluido el notify para que solo actue tras este evento
 
 
-                Intent activity1 = new Intent(MainActivity.this,Ejercicios.class);
-                startActivityForResult(activity1,0);
+                Intent activity1 = new Intent(MainActivity.this, Ejercicios.class);
+                startActivityForResult(activity1, 0);
             }
         };
-        registerReceiver(br, new IntentFilter("com.ejerciciosdeespalda") );
-        pi = PendingIntent.getBroadcast( this, 0, new Intent("com.ejerciciosdeespalda"),
-                0 );
-        am = (AlarmManager)(this.getSystemService( Context.ALARM_SERVICE ));
-
-
-
+        registerReceiver(br, new IntentFilter("com.ejerciciosdeespalda"));
+        pi = PendingIntent.getBroadcast(this, 0, new Intent("com.ejerciciosdeespalda"),
+                0);
+        am = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
 
 
     }
 
 
-
-    protected void onResume (){
+    protected void onResume() {
         super.onResume();
 
 
+        //setea el tiempo a x segundos
+        SharedPreferences pref =
+                PreferenceManager.getDefaultSharedPreferences(
+                        MainActivity.this);
+        tiempomin = Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
 
 
-
-                //setea el tiempo a x segundos
-                SharedPreferences pref =
-                        PreferenceManager.getDefaultSharedPreferences(
-                                MainActivity.this);
-                tiempomin =Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
+        boton.setText(tiempomin + "min");
 
 
-        boton.setText(tiempomin+"min");
-
-
-            }
-
-
-
-
-
-
-
-
+    }
 
 
     @Override
@@ -305,9 +276,9 @@ public class MainActivity extends Activity
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-          //  TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //  TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             //textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
@@ -328,7 +299,6 @@ public class MainActivity extends Activity
         unregisterReceiver(br);
         super.onDestroy();
     }
-
 
 
 }

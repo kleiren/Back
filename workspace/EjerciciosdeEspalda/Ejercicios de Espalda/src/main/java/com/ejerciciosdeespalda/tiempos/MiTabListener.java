@@ -1,4 +1,4 @@
-package com.ejerciciosdeespalda;
+package com.ejerciciosdeespalda.tiempos;
 
 
 import android.app.ActionBar;
@@ -6,6 +6,8 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ActionBar.Tab;
 import android.util.Log;
+
+import com.ejerciciosdeespalda.R;
 
 public class MiTabListener implements ActionBar.TabListener {
 

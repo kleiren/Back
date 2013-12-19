@@ -27,7 +27,7 @@
             android:label="@string/title_activity_ejercicios" >
         </activity>
         <activity
-            android:name="com.ejerciciosdeespalda.Tiempo"
+            android:name=".tiempos.Tiempo"
             android:label="@string/title_activity_tiempo" >
         </activity>
         <activity

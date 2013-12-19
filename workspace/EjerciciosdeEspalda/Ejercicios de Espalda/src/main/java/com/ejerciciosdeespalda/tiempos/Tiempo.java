@@ -1,12 +1,13 @@
-package com.ejerciciosdeespalda;
+package com.ejerciciosdeespalda.tiempos;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.ejerciciosdeespalda.MainActivity;
+import com.ejerciciosdeespalda.R;
+import com.ejerciciosdeespalda.SQLiteHelper;
 
 /*import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
@@ -61,6 +66,7 @@ public class Tiempo extends Activity {
 
         Bundle extras = getIntent().getExtras();
         float [] tiempos= extras.getFloatArray("tiempos");
+        basededatos(tiempos);
 
         //Creamos los fragments de cada pestaña
         Fragment tab1frag = new Tab1(tiempos);
@@ -104,25 +110,16 @@ public class Tiempo extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences pref =
+                        PreferenceManager.getDefaultSharedPreferences(
+                                Tiempo.this);
+                int tiempomin = Integer.parseInt(pref.getString("opcion2", ""));
+                Toast.makeText(getApplicationContext(), "Te avisaremos en " + tiempomin + " minutos", Toast.LENGTH_LONG).show();
+
 
                 Intent activity1 = new Intent(Tiempo.this, MainActivity.class);
                 startActivityForResult(activity1, 0);
                 finish();
-
-                BroadcastReceiver br = new BroadcastReceiver() {
-                    //define que hacer al pasar el tiempo
-                    @Override
-                    public void onReceive(Context c, Intent i) {
-                        Toast.makeText(c, "Te avisaremos en 1 hora", Toast.LENGTH_LONG).show();
-
-
-
-                    }
-                };
-
-
-
-
 
 
             }
@@ -138,10 +135,13 @@ public class Tiempo extends Activity {
 
 
 
+
 //grafico();
 
 
     }
+
+
 
 
     //de momento crashea el gráfico
@@ -165,6 +165,33 @@ public class Tiempo extends Activity {
     layout.addView(graphView);
 
 }*/
+
+    private void basededatos(float [] tiempos){
+        //Abrimos la base de datos 'DBUsuarios' en modo escritura
+        SQLiteHelper usdbh =
+                new SQLiteHelper(this, "DBTiempos", null, 1);
+
+        SQLiteDatabase db = usdbh.getWritableDatabase();
+
+        //Si hemos abierto correctamente la base de datos
+        if(db != null)
+        {
+            //Insertamos 5 usuarios de ejemplo
+            for(int i=1; i<=5; i++)
+            {
+                //Generamos los datos
+                int codigo = i;
+
+
+                //Insertamos los datos en la tabla Usuarios
+                db.execSQL("INSERT INTO Usuarios (codigo, nombre) " +
+                        "VALUES (" + codigo + ", '" + tiempos +"')");
+            }
+
+            //Cerramos la base de datos
+            db.close();
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         

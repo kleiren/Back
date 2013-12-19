@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ejerciciosdeespalda.tiempos.Tiempo;
+
 public class Ejercicios extends Activity {
 
 
