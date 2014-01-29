@@ -1,4 +1,4 @@
-package com.ejerciciosdeespalda;
+package com.ejerciciosdeespalda.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

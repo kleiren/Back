@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -26,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -42,9 +44,10 @@ public class MainActivity extends Activity
      */
     private CharSequence mTitle;
 
-    private Button boton, botonstart;
-
+    private Button boton, botonstart, sq;
+private TextView basededatos;
     private int tiempomin, tiempomilis;
+    private SQLiteDatabase db;
 
     final static private long ONE_SECOND = 1000;
     final static private long TWENTY_SECONDS = ONE_SECOND * 20;
@@ -75,6 +78,9 @@ public class MainActivity extends Activity
         boton = (Button) findViewById(R.id.botontiempo);
         botonstart = (Button) findViewById(R.id.botonstart);
 
+        sq = (Button) findViewById(R.id.button);
+        basededatos= (TextView) findViewById(R.id.textView);
+
         boton.setText(((tiempomin / 60) * 1000) + "min");
 
 
@@ -103,6 +109,34 @@ public class MainActivity extends Activity
                 //cambia de a la actividad ejercicios
                 Intent activity1 = new Intent(MainActivity.this, Ejercicios.class);
                 startActivityForResult(activity1, 0);
+            }
+        });
+
+        UsuariosSQLiteHelper usdbh =
+                new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
+
+        db = usdbh.getWritableDatabase();
+
+        sq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor c = db.rawQuery("SELECT codigo, nombre FROM Usuarios", null);
+                basededatos.setText("");
+
+                c.moveToLast();
+                String cod = c.getString(0);
+                String nom = c.getString(1);
+
+                basededatos.append(" " + cod + " - " + nom + "\n");
+              /*  if (c.moveToFirst()) {
+                    //Recorremos el cursor hasta que no haya m�s registros
+                    do {
+                        String cod = c.getString(0);
+                        String nom = c.getString(1);
+
+                        basededatos.append(" " + cod + " - " + nom + "\n");
+                    } while(c.moveToNext());
+                }*/
             }
         });
 

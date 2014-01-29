@@ -3,6 +3,7 @@ package com.ejerciciosdeespalda.tiempos;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,7 +19,10 @@ import android.widget.Toast;
 
 import com.ejerciciosdeespalda.MainActivity;
 import com.ejerciciosdeespalda.R;
-import com.ejerciciosdeespalda.SQLiteHelper;
+import com.ejerciciosdeespalda.UsuariosSQLiteHelper;
+
+import java.util.Calendar;
+import java.lang.String;
 
 /*import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
@@ -31,7 +35,7 @@ public class Tiempo extends Activity {
     private Button back ;
 
     float[] times=new float [15];
-
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,10 @@ public class Tiempo extends Activity {
 
         Bundle extras = getIntent().getExtras();
         float [] tiempos= extras.getFloatArray("tiempos");
-        basededatos(tiempos);
+        insertar(tiempos);
+
+
+
 
         //Creamos los fragments de cada pestaña
         Fragment tab1frag = new Tab1(tiempos);
@@ -166,7 +173,7 @@ public class Tiempo extends Activity {
 
 }*/
 
-    private void basededatos(float [] tiempos){
+/*    private void basededatos(float [] tiempos){
         //Abrimos la base de datos 'DBUsuarios' en modo escritura
         SQLiteHelper usdbh =
                 new SQLiteHelper(this, "DBTiempos", null, 1);
@@ -192,6 +199,51 @@ public class Tiempo extends Activity {
             db.close();
         }
     }
+
+    */
+
+
+
+
+
+
+        public void insertar (float[]tiempos) {
+
+            //Abrimos la base de datos 'DBUsuarios' en modo escritura
+            UsuariosSQLiteHelper usdbh =
+                    new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
+
+
+            db = usdbh.getWritableDatabase();
+            //Recuperamos los valores de los campos de texto
+
+
+            Calendar c = Calendar.getInstance();
+            int seconds = c.get(Calendar.SECOND);
+            String cod = Integer.toString(seconds);
+            String nom = arrayToString(tiempos);
+
+            //Alternativa 1: m�todo sqlExec()
+            //String sql = "INSERT INTO Usuarios (codigo,nombre) VALUES ('" + cod + "','" + nom + "') ";
+            //db.execSQL(sql);
+
+            //Alternativa 2: m�todo insert()
+            ContentValues nuevoRegistro = new ContentValues();
+            nuevoRegistro.put("codigo", cod);
+            nuevoRegistro.put("nombre", nom);
+            db.insert("Usuarios", null, nuevoRegistro);
+        }
+public String arrayToString(float[]tiempos){
+    String cadena="";
+    int a;
+    for (int x=0;x<10;x++){
+        a=(int)tiempos[x]*10;
+        cadena =cadena+ (String.valueOf(a));
+    }
+    return cadena;
+}
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
