@@ -11,7 +11,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     String sqlCreate = "CREATE TABLE Usuarios (codigo INTEGER, nombre TEXT)";
 
     public SQLiteHelper(Context contexto, String nombre,
-                                CursorFactory factory, int version) {
+                        CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
     }
 

@@ -13,8 +13,7 @@ public class MiTabListener implements ActionBar.TabListener {
 
     private Fragment fragment;
 
-    public MiTabListener(Fragment fg)
-    {
+    public MiTabListener(Fragment fg) {
         this.fragment = fg;
     }
 

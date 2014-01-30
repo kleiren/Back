@@ -35,6 +35,15 @@
     <string name="tiempos">1:00</string>
     <string name="title_activity_opciones_actvivity">OpcionesActvivity</string>
     <string name="tiemposcabeza">Tiempos Cabeza</string>
-    <string name="tiemposes">Tiempos Extremidades Superiores</string><string name="back">Volver</string><string name="tiemposespalda">Tiempos Espalda</string><string name="timeb1"/><string name="timeb2"/><string name="tiemposei">Tiempos Extremidades Inferiores</string><string name="time1ei"/><string name="tiemposo">Tiempos Ejercicios Oculares</string><string name="timeo"/>
+    <string name="tiemposes">Tiempos Extremidades Superiores</string>
+    <string name="back">Volver</string>
+    <string name="tiemposespalda">Tiempos Espalda</string>
+    <string name="timeb1"></string>
+    <string name="timeb2"></string>
+    <string name="tiemposei">Tiempos Extremidades Inferiores</string>
+    <string name="time1ei"></string>
+    <string name="tiemposo">Tiempos Ejercicios Oculares</string>
+    <string name="timeo"></string>
+    <string name="title_activity_base_datos">BaseDatos</string>
 
 </resources>

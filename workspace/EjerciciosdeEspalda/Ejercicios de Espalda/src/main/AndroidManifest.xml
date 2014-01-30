@@ -27,15 +27,17 @@
             android:label="@string/title_activity_ejercicios" >
         </activity>
         <activity
-            android:name=".tiempos.Tiempo"
+            android:name="com.ejerciciosdeespalda.tiempos.Tiempo"
             android:label="@string/title_activity_tiempo" >
         </activity>
         <activity
             android:name="com.ejerciciosdeespalda.OpcionesActivity"
             android:label="@string/title_activity_tiempo" >
         </activity>
-
-
+        <activity
+            android:name="com.ejerciciosdeespalda.BaseDatos"
+            android:label="@string/title_activity_base_datos" >
+        </activity>
     </application>
 
 </manifest>

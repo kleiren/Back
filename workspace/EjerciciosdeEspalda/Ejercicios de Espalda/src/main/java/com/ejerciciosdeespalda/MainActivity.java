@@ -44,8 +44,8 @@ public class MainActivity extends Activity
      */
     private CharSequence mTitle;
 
-    private Button boton, botonstart, sq;
-private TextView basededatos;
+    private Button boton, botonstart, sq, botonbase;
+    private TextView basededatos;
     private int tiempomin, tiempomilis;
     private SQLiteDatabase db;
 
@@ -77,9 +77,10 @@ private TextView basededatos;
         setup();
         boton = (Button) findViewById(R.id.botontiempo);
         botonstart = (Button) findViewById(R.id.botonstart);
+        botonbase = (Button) findViewById(R.id.botonbase);
 
         sq = (Button) findViewById(R.id.button);
-        basededatos= (TextView) findViewById(R.id.textView);
+        basededatos = (TextView) findViewById(R.id.textView);
 
         boton.setText(((tiempomin / 60) * 1000) + "min");
 
@@ -100,7 +101,6 @@ private TextView basededatos;
                 Toast.makeText(getApplicationContext(), "Te avisaremos en " + tiempomin + " minutos", Toast.LENGTH_LONG).show();
 
 
-
             }
         });
         botonstart.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +112,16 @@ private TextView basededatos;
             }
         });
 
+        botonbase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent activity2 = new Intent(MainActivity.this, BaseDatos.class);
+
+                startActivityForResult(activity2, 0);
+            }
+        });
         UsuariosSQLiteHelper usdbh =
                 new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
 
@@ -142,7 +152,6 @@ private TextView basededatos;
 
 
     }
-
 
 
     private void obtenerPreferencias() {

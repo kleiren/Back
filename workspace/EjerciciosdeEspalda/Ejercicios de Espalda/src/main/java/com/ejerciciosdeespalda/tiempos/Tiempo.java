@@ -31,10 +31,9 @@ import com.jjoe64.graphview.LineGraphView;*/
 public class Tiempo extends Activity {
 
 
+    private Button back;
 
-    private Button back ;
-
-    float[] times=new float [15];
+    float[] times = new float[15];
     private SQLiteDatabase db;
 
     @Override
@@ -69,10 +68,8 @@ public class Tiempo extends Activity {
 
 
         Bundle extras = getIntent().getExtras();
-        float [] tiempos= extras.getFloatArray("tiempos");
+        float[] tiempos = extras.getFloatArray("tiempos");
         insertar(tiempos);
-
-
 
 
         //Creamos los fragments de cada pestaña
@@ -98,22 +95,13 @@ public class Tiempo extends Activity {
         abar.addTab(tab5);
 
 
-
-
-
-
-
-
-
-
-
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
 
-      back = (Button) findViewById(R.id.back);
+        back = (Button) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,22 +121,10 @@ public class Tiempo extends Activity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
 //grafico();
 
 
     }
-
-
 
 
     //de momento crashea el gráfico
@@ -203,50 +179,51 @@ public class Tiempo extends Activity {
     */
 
 
+    public void insertar(float[] tiempos) {
+
+        //Abrimos la base de datos 'DBUsuarios' en modo escritura
+        UsuariosSQLiteHelper usdbh =
+                new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
 
 
+        db = usdbh.getWritableDatabase();
+        //Recuperamos los valores de los campos de texto
 
 
-        public void insertar (float[]tiempos) {
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int hour = c.get(Calendar.HOUR);
+        int minute = c.get(Calendar.MINUTE);
+        String cod = Integer.toString(hour)+":"+Integer.toString(minute)+" "+Integer.toString(day)+"/"+Integer.toString(month+1)+"/"+Integer.toString(year);
+        String nom = arrayToString(tiempos);
 
-            //Abrimos la base de datos 'DBUsuarios' en modo escritura
-            UsuariosSQLiteHelper usdbh =
-                    new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
+        //Alternativa 1: m�todo sqlExec()
+        //String sql = "INSERT INTO Usuarios (codigo,nombre) VALUES ('" + cod + "','" + nom + "') ";
+        //db.execSQL(sql);
 
-
-            db = usdbh.getWritableDatabase();
-            //Recuperamos los valores de los campos de texto
-
-
-            Calendar c = Calendar.getInstance();
-            int seconds = c.get(Calendar.SECOND);
-            String cod = Integer.toString(seconds);
-            String nom = arrayToString(tiempos);
-
-            //Alternativa 1: m�todo sqlExec()
-            //String sql = "INSERT INTO Usuarios (codigo,nombre) VALUES ('" + cod + "','" + nom + "') ";
-            //db.execSQL(sql);
-
-            //Alternativa 2: m�todo insert()
-            ContentValues nuevoRegistro = new ContentValues();
-            nuevoRegistro.put("codigo", cod);
-            nuevoRegistro.put("nombre", nom);
-            db.insert("Usuarios", null, nuevoRegistro);
-        }
-public String arrayToString(float[]tiempos){
-    String cadena="";
-    int a;
-    for (int x=0;x<10;x++){
-        a=(int)tiempos[x]*10;
-        cadena =cadena+ (String.valueOf(a));
+        //Alternativa 2: m�todo insert()
+        ContentValues nuevoRegistro = new ContentValues();
+        nuevoRegistro.put("codigo", cod);
+        nuevoRegistro.put("nombre", nom);
+        db.insert("Usuarios", null, nuevoRegistro);
     }
-    return cadena;
-}
+
+    public String arrayToString(float[] tiempos) {
+        String cadena = "";
+        int a;
+        for (int x = 0; x < 11; x++) {
+            a = (int) tiempos[x] * 10;
+            cadena = cadena + (String.valueOf(a));
+        }
+        return cadena;
+    }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.tiempo, menu);
         return true;
@@ -274,7 +251,7 @@ public String arrayToString(float[]tiempos){
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_tiempo, container, false);
             return rootView;
         }

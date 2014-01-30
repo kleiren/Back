@@ -62,6 +62,14 @@
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/botonstart" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Historial de tiempos"
+            android:id="@+id/botonbase"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" />
+
     </RelativeLayout>
 
 
