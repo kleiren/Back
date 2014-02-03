@@ -12,9 +12,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
@@ -27,7 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -44,9 +44,11 @@ public class MainActivity extends Activity
      */
     private CharSequence mTitle;
 
-    private Button boton, botonstart, sq, botonbase;
-    private TextView basededatos;
-    private int tiempomin, tiempomilis;
+    private Button boton, botonstart, botonbase;
+    private ProgressBar barra;
+
+    private int tiempomin, tiempomilis, tiempomilisaux;
+    private float timepased;
     private SQLiteDatabase db;
 
     final static private long ONE_SECOND = 1000;
@@ -79,10 +81,37 @@ public class MainActivity extends Activity
         botonstart = (Button) findViewById(R.id.botonstart);
         botonbase = (Button) findViewById(R.id.botonbase);
 
-        sq = (Button) findViewById(R.id.button);
-        basededatos = (TextView) findViewById(R.id.textView);
+        barra = (ProgressBar) findViewById (R.id.progressBar);
+
+
 
         boton.setText(((tiempomin / 60) * 1000) + "min");
+        SharedPreferences pref =
+                PreferenceManager.getDefaultSharedPreferences(
+                        MainActivity.this);
+        tiempomin = Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
+        tiempomilis = (tiempomin * 1000) * 60;
+tiempomilisaux=tiempomilis;
+        //barra de progreso
+         CountDownTimer cdt;
+final int a=10*1000;
+
+
+        barra.setProgress(a);
+        cdt = new CountDownTimer(a, 1000) {
+int b=a;
+            public void onTick(long millisUntilFinished) {
+
+                b = b-(int) ((a/ 60) * 100);
+                barra.setProgress(b);
+
+            }
+            public void onFinish() {
+
+            }
+        };
+
+        cdt.start();
 
 
         boton.setOnClickListener(new View.OnClickListener() {
@@ -96,13 +125,23 @@ public class MainActivity extends Activity
                 tiempomilis = (tiempomin * 1000) * 60;
 
 
+
                 am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +
                         tiempomilis, pi);
                 Toast.makeText(getApplicationContext(), "Te avisaremos en " + tiempomin + " minutos", Toast.LENGTH_LONG).show();
+tiempomilisaux=tiempomilis;
+
+
+
+
 
 
             }
+
         });
+
+
+
         botonstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,33 +161,9 @@ public class MainActivity extends Activity
                 startActivityForResult(activity2, 0);
             }
         });
-        UsuariosSQLiteHelper usdbh =
-                new UsuariosSQLiteHelper(this, "DBUsuarios", null, 1);
 
-        db = usdbh.getWritableDatabase();
 
-        sq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Cursor c = db.rawQuery("SELECT codigo, nombre FROM Usuarios", null);
-                basededatos.setText("");
 
-                c.moveToLast();
-                String cod = c.getString(0);
-                String nom = c.getString(1);
-
-                basededatos.append(" " + cod + " - " + nom + "\n");
-              /*  if (c.moveToFirst()) {
-                    //Recorremos el cursor hasta que no haya m�s registros
-                    do {
-                        String cod = c.getString(0);
-                        String nom = c.getString(1);
-
-                        basededatos.append(" " + cod + " - " + nom + "\n");
-                    } while(c.moveToNext());
-                }*/
-            }
-        });
 
 
     }
@@ -200,7 +215,7 @@ public class MainActivity extends Activity
             //define que hacer al pasar el tiempo
             @Override
             public void onReceive(Context c, Intent i) {
-                Toast.makeText(c, "Han pasado 5 segundos", Toast.LENGTH_LONG).show();
+                Toast.makeText(c, "Han pasado " +tiempomin +" minutos", Toast.LENGTH_LONG).show();
                 mNotificationManager.notify(1, mBuilder.build());  //incluido el notify para que solo actue tras este evento
 
 

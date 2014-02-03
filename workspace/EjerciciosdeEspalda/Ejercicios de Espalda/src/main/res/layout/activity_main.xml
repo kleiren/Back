@@ -20,9 +20,8 @@
             android:layout_height="wrap_content"
             android:text="@string/boton"
             android:layout_gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="168dp" />
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,24 +43,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/textView"
-            android:layout_below="@+id/titulo"
-            android:layout_alignRight="@+id/botontiempo"
-            android:layout_marginTop="107dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button"
-            android:layout_centerVertical="true"
-            android:layout_alignLeft="@+id/botonstart" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,6 +50,15 @@
             android:id="@+id/botonbase"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_below="@+id/botontiempo"
+            android:layout_alignLeft="@+id/titulo"
+            android:layout_alignRight="@+id/titulo" />
 
     </RelativeLayout>
 

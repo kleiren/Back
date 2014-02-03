@@ -22,11 +22,9 @@ import com.ejerciciosdeespalda.tiempos.Tiempo;
 public class BaseDatos extends Activity {
     ListView listView;
     private SQLiteDatabase db;
-    public float[] tiempo = new float[15];
+    public float[] tiempo=new float []{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-    {
-        tiempo = new float[]{0};
-    }
+
 
 
     @Override
@@ -100,7 +98,7 @@ dataBase();// obtiene datos de la base
 
                 // ListView Clicked item value
                 String itemValue = (String) listView.getItemAtPosition(position);
-               // cambio(tiempo);
+               cambio(value[itemPosition]);
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
                         value[itemPosition], Toast.LENGTH_LONG)
@@ -123,9 +121,12 @@ dataBase();// obtiene datos de la base
 
     }
 
-    public void cambio(float[] tiempo) {
+    public void cambio( String value) {
 
-
+String[] strarr=value.split("");
+for (int i=0; i<tiempo.length; i++){
+    tiempo[i]= Integer.parseInt( strarr[i]);
+}
 
 
 
