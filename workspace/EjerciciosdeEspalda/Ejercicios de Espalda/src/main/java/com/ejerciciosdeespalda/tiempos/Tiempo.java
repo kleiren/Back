@@ -197,7 +197,13 @@ public class Tiempo extends Activity {
         int hour = c.get(Calendar.HOUR);
         int minute = c.get(Calendar.MINUTE);
         String cod = Integer.toString(hour)+":"+Integer.toString(minute)+" "+Integer.toString(day)+"/"+Integer.toString(month+1)+"/"+Integer.toString(year);
-        String nom = arrayToString(tiempos);
+        String nom="";
+
+        for (int i=0; i<tiempos.length; i++){
+
+         nom+=( Integer.toString((int)tiempos[i]))+";";
+
+        }
 
         //Alternativa 1: m�todo sqlExec()
         //String sql = "INSERT INTO Usuarios (codigo,nombre) VALUES ('" + cod + "','" + nom + "') ";

@@ -104,9 +104,6 @@ dataBase();// obtiene datos de la base
                         value[itemPosition], Toast.LENGTH_LONG)
                         .show();
 
-
-
-
             }
 
         });
@@ -122,11 +119,13 @@ dataBase();// obtiene datos de la base
     }
 
     public void cambio( String value) {
+String [] tiempoString;
 
-String[] strarr=value.split("");
-for (int i=0; i<tiempo.length; i++){
-    tiempo[i]= Integer.parseInt( strarr[i]);
-}
+       tiempoString=value.split(";");
+
+        for (int i=0; i>12; i++){
+            tiempo[i]= Integer.parseInt (tiempoString [i]);
+   }
 
 
 
