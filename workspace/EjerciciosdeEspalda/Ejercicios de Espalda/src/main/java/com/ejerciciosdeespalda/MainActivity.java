@@ -89,7 +89,7 @@ public class MainActivity extends Activity
         SharedPreferences pref =
                 PreferenceManager.getDefaultSharedPreferences(
                         MainActivity.this);
-        tiempomin = Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
+//        tiempomin = Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
         tiempomilis = (tiempomin * 1000) * 60;
 tiempomilisaux=tiempomilis;
         //barra de progreso
@@ -240,7 +240,7 @@ tiempomilisaux=tiempomilis;
         SharedPreferences pref =
                 PreferenceManager.getDefaultSharedPreferences(
                         MainActivity.this);
-        tiempomin = Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
+//        tiempomin = Integer.parseInt(pref.getString("opcion2", "")); //coge el valor de las preferencias
 
 
         boton.setText(tiempomin + "min");

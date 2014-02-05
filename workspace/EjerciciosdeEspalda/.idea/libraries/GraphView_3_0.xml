@@ -1,11 +1,7 @@
 <component name="libraryTable">
   <library name="GraphView-3.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/Ejercicios de Espalda/build/libs/GraphView-3.0.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/Ejercicios de Espalda/build/libs/GraphView-3.0.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
