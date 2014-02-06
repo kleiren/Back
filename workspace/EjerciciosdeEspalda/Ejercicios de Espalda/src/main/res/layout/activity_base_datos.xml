@@ -8,8 +8,14 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="453dp"
         android:id="@+id/listView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
+        android:layout_gravity="center_horizontal|top" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/borrarBase"
+        android:id="@+id/botonBorrar"
+        android:layout_gravity="right|bottom" />
 </FrameLayout>

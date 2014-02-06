@@ -72,7 +72,7 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="16" selection-start="2227" selection-end="2227" vertical-scroll-proportion="2.0689654" vertical-offset="0" max-vertical-offset="1815">
+            <state line="101" column="41" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.11083744" vertical-offset="1215" max-vertical-offset="1815">
               <folding />
             </state>
           </provider>
@@ -81,8 +81,10 @@
       <file leaf-file-name="UsuariosSQLiteHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/UsuariosSQLiteHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="705">
-              <folding />
+            <state line="7" column="13" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="660">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,6 +127,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -163,8 +167,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -366,7 +368,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -380,7 +382,7 @@
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
   </component>
@@ -398,6 +400,22 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="16" selection-start="2227" selection-end="2227" vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="1815">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/UsuariosSQLiteHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="705">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="0" selection-start="655" selection-end="682" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1935">
           <folding />
         </state>
@@ -406,7 +424,9 @@
     <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/UsuariosSQLiteHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="705">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -420,7 +440,9 @@
     <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/UsuariosSQLiteHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="705">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -434,13 +456,15 @@
     <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/UsuariosSQLiteHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="660">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/sgoliver/android/bd/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="16" selection-start="2227" selection-end="2227" vertical-scroll-proportion="2.0689654" vertical-offset="0" max-vertical-offset="1815">
+        <state line="101" column="41" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.11083744" vertical-offset="1215" max-vertical-offset="1815">
           <folding />
         </state>
       </provider>

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +24,9 @@ public class BaseDatos extends Activity {
     ListView listView;
     private SQLiteDatabase db;
     public float[] tiempo=new float []{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    private Button botonBorrar;
+
+
 
 
 
@@ -48,10 +52,11 @@ dataBase();// obtiene datos de la base
 
 
 
-        c.moveToPrevious();
+
 
 
         listView = (ListView) findViewById(R.id.listView);
+        botonBorrar =(Button) findViewById (R.id.botonBorrar);
 
         String[] code = new String[15];
         final String[] value =new String[15];
@@ -107,6 +112,16 @@ dataBase();// obtiene datos de la base
             }
 
         });
+        botonBorrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                db.delete("Usuarios", null, null);
+               finish();
+                startActivity(getIntent());
+
+            }
+        });
 
     }
     public void dataBase(){
@@ -123,17 +138,17 @@ String [] tiempoString;
 
        tiempoString=value.split(";");
 
-        for (int i=0; i>12; i++){
+        for (int i=0; i<12; i++){
             tiempo[i]= Integer.parseInt (tiempoString [i]);
    }
 
 
 
-        Intent activity4 = new Intent(BaseDatos.this, Tiempo.class);
+        Intent activity2 = new Intent(BaseDatos.this, Tiempo.class);
 
 
-        activity4.putExtra("tiempos", tiempo);
-        startActivityForResult(activity4, 0);
+        activity2.putExtra("tiempos", tiempo);
+        startActivityForResult(activity2, 0);
 
     }
 

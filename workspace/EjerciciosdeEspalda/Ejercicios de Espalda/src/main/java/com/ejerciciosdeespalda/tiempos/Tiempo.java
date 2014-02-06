@@ -22,7 +22,6 @@ import com.ejerciciosdeespalda.R;
 import com.ejerciciosdeespalda.UsuariosSQLiteHelper;
 
 import java.util.Calendar;
-import java.lang.String;
 
 /*import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
@@ -54,9 +53,10 @@ public class Tiempo extends Activity {
         //abar.setDisplayShowTitleEnabled(false);
 
         //Creamos las pestañas
+        ActionBar.Tab tab0 =
+                abar.newTab().setText("Tiempo total");
         ActionBar.Tab tab1 =
                 abar.newTab().setText("Tiempos cabeza");
-
         ActionBar.Tab tab2 =
                 abar.newTab().setText("Tiempos extremidades superiores");
         ActionBar.Tab tab3 =
@@ -73,6 +73,7 @@ public class Tiempo extends Activity {
 
 
         //Creamos los fragments de cada pestaña
+        Fragment tab0frag = new Tab0(tiempos);
         Fragment tab1frag = new Tab1(tiempos);
         Fragment tab2frag = new Tab2(tiempos);
         Fragment tab3frag = new Tab3(tiempos);
@@ -81,6 +82,7 @@ public class Tiempo extends Activity {
 
 
         //Asociamos los listener a las pestañas
+        tab0.setTabListener(new MiTabListener(tab0frag));
         tab1.setTabListener(new MiTabListener(tab1frag));
         tab2.setTabListener(new MiTabListener(tab2frag));
         tab3.setTabListener(new MiTabListener(tab3frag));
@@ -88,6 +90,7 @@ public class Tiempo extends Activity {
         tab5.setTabListener(new MiTabListener(tab5frag));
 
         //Añadimos las pestañas a la action bar
+        abar.addTab(tab0);
         abar.addTab(tab1);
         abar.addTab(tab2);
         abar.addTab(tab3);

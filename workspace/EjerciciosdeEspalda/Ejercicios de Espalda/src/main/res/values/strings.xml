@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Ejercicios de Espalda</string>
+    <string name="app_name">Ejercicios</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_example"></string>
+    <string name="action_settings">Opciones</string>
     <string name="boton">5 sec</string>
     <string name="title_activity_ejercicios">Ejercicios</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world"></string>
     <string name="Ejercicios">Ejercicios</string>
     <string name="Introex">Pulse en la pantalla para comenzar.</string>
     <string name="cEx1">Inclinar lentamente la cabeza hacia atrás. Bajar la cabeza hasta que la barbilla contacte con el pecho.</string>
@@ -26,14 +26,14 @@
     <string name="bEx2">Con los dedos entrelazados detrás de la cabeza llevar los codos hacia atrás y aproximar los omóplatos.</string>
     <string name="eiEx1">En posición sentado, estirar las piernas y hacer movimientos con los tobillos.</string>
     <string name="oEx1">Alzar las cejas y abrir bien los ojos mirando a un punto lejano. Mover los ojos en todas direcciones.</string>
-    <string name="tituloinicio">Titulo Guay</string>
+    <string name="tituloinicio">Título Guay</string>
     <string name="botonstart">Comenzar ya</string>
     <string name="title_activity_resultados">Resultados</string>
     <string name="title_activity_tiempos">Tiempos</string>
     <string name="title_activity_main_activity2">MainActivity</string>
     <string name="title_activity_tiempo">Tiempo</string>
     <string name="tiempos">1:00</string>
-    <string name="title_activity_opciones_actvivity">OpcionesActvivity</string>
+    <string name="title_activity_opciones_actvivity">Opciones</string>
     <string name="tiemposcabeza">Tiempos Cabeza</string>
     <string name="tiemposes">Tiempos Extremidades Superiores</string>
     <string name="back">Volver</string>
@@ -44,6 +44,9 @@
     <string name="time1ei"></string>
     <string name="tiemposo">Tiempos Ejercicios Oculares</string>
     <string name="timeo"></string>
-    <string name="title_activity_base_datos">BaseDatos</string>
+    <string name="title_activity_base_datos">Historial</string>
+    <string name="borrarBase">Borrar todos los datos</string>
+    <string name="timeT">asd</string>
+    <string name="timeTotal">Tiempo Total</string>
 
 </resources>

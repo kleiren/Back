@@ -229,10 +229,8 @@ public class Ejercicios extends Activity {
                 //cambia de a la actividad ejercicios
                 Intent activity2 = new Intent(Ejercicios.this, Tiempo.class);
 
-
                 activity2.putExtra("tiempos", tiempo);
                 startActivityForResult(activity2, 0);
-
 
                 break;
             }
